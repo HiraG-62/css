@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>
+        title
+    </title>
+    <link type="text/css" rel='stylesheet' href='./reset.css' />
+    <link type="text/css" rel='stylesheet' href='./style.css' />
+
+    <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="app">
+        <div class="sidebar">
+            <div class="main_threads_bar">
+                <div class="sidebar_icon">
+                    <img src="home.png">
+                </div>
+                <div class="sidebar_icon">
+                    <img src="home.png">
+                </div>
+            </div>
+            <div class="sub_threads_bar">
+
+            </div>
+        </div>
+        <div class="main_wrapper">
+            <div class="main_header">
+                
+            </div>
+            <div class="main_body">
+                <div class="post_area">
+                    <li class="post my_post">
+                        <div class="ql-snow">
+                            <div class="ql-editor" style="white-space: normal; padding: 5px 5px;">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="post others_post">
+                        <div class="ql-snow">
+                            <div class="ql-editor" style="white-space: normal; padding: 5px 5px;">
+                            </div>
+                        </div>
+                    </li>
+                </div>
+                <div class="form_area">
+                    <form action="/content" method="post" onsubmit="clickSubmit()">
+                        <div class="writing_quill_area">
+                            <textarea name="contents" style="display:none" id="contents"></textarea>
+                            <div id="editor"></div>
+                        </div>
+                        <div class="enter-area">
+                            <button type="submit" class="enter button button-icon redButton">送信</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
+<script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
+<script>
+    const toolbarOptions = [
+        ['bold', 'underline', 'strike'],        // toggled buttons
+        ['blockquote', 'code-block', 'link'],
+
+        [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'align': [] }],
+
+        [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+        [{ 'color': [] }, { 'background': [] }, { 'font': [] }],          // dropdown with defaults from theme
+    ];
+    const quill = new Quill('#editor', {
+        theme: 'snow',
+        placeholder: 'Enterで改行しCtrl + Enterで投稿します。',
+        modules: {
+            toolbar: toolbarOptions,
+        }
+    });
+
+    function clickSubmit() {
+
+        document.getElementById('contents').value = quill.root.innerHTML;
+        document.form.submit();
+    }
+</script>
+
+</html>
