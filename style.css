@@ -6,6 +6,17 @@ body {
     height: 100%;
 }
 
+ul,
+li {
+    display: block;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #222;
+}
+
 .app {
     height: 100%;
     display: flex;
@@ -34,9 +45,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 100%;
+    border-radius: 20%;
     background-color: #fff;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .main_threads_bar img {
@@ -58,11 +69,58 @@ body {
 }
 
 .main_header {
-    width: 100%;
+    /* width: 100%; */
     height: 50px;
     border-bottom: 2px solid #ddd;
 }
 
 .main_body {
-    margin: 0 36px 0 36px ;
+    height: 100%;
+    margin: 0 36px 0 36px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}
+
+.post_area {
+    width: 100%;
+    /* height: 80vh; */
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.form_area {
+    width: auto;
+    display: flex;
+    position: relative;
+    /* box-sizing: border-box; */
+}
+
+.writing_quill_area {
+    width: 100%;
+    bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.ql-editor {
+    max-height: 35vh !important;
+    overflow-y: auto;
+}
+
+.ql-container {
+    height: auto !important;
+}
+
+.ql-editor strong {
+    font-weight: bold;
+}
+
+.enter-area {
+    text-align: right;
+    padding-left: 10px;
+}
+
+.enter {
+    width: 100%;
 }
