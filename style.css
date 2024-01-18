@@ -31,6 +31,13 @@ a {
     border-radius: 10px;
 }
 
+.icon {
+	-webkit-user-drag: none;
+	-moz-user-select: none;
+    pointer-events: none;
+    user-select: none;
+}
+
 .app {
     height: 100%;
     display: flex;
@@ -46,15 +53,17 @@ a {
 .main_threads_bar {
     width: 60px;
     height: 100%;
-    background-color: #ddd;
+    background-color: #bbb;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .sidebar_icon {
     width: 50px;
     height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -62,6 +71,17 @@ a {
     border-radius: 20%;
     background-color: #fff;
     margin-top: 5px;
+}
+
+.sidebar_icon:hover {
+    background-color: orange;
+}
+
+.sidebar_icon:active {
+    background-color: #eee;
+    margin-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .main_threads_bar img {
@@ -72,8 +92,50 @@ a {
 
 
 .sub_threads_bar {
-    flex-grow: 1;
+    width: 190px;
     background-color: #eee;
+    font-weight: bold;
+}
+
+.sub_threads_header {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #fff;
+    box-sizing: border-box;
+}
+
+.sub_threads_header p {
+    margin-left: 12px;
+    font-size: 20px;
+}
+
+.sub_thread {
+    width: 100%;
+    height: 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.sub_thread p {
+    margin-left: 20px;
+}
+
+.sub_thread a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.sub_thread:hover {
+    background-color: #fff;
+    cursor: pointer;
 }
 
 .main_wrapper {
@@ -83,37 +145,74 @@ a {
 }
 
 .main_header {
-    /* width: 100%; */
     height: 50px;
     border-bottom: 2px solid #ddd;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.header_content {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left:24px;
 }
 
 .main_body {
     height: calc(100% - 50px);
     margin-left: 36px;
     display: flex;
-    position: relative;
     flex-direction: column;
+    justify-content: end;
 }
 
-.post_area {
+#post_area {
     width: 100%;
     max-height: 85vh;
     overflow-y: auto;
 }
 
-.form_area {
-    width: 100%;
-    padding-right: 36px;
+.post {
+    width: fit-content;
+    min-width: 20%;
+}
+
+.post_data {
     display: flex;
-    position: fixed;
-    bottom: 12px;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #444;
+    margin: 0 12px;
+}
+
+.post_content {
+    min-height: 40px;
+    border: 2px solid #ccc;
+    border-radius: 30px;
+    padding: 8px 24px;
+}
+
+.form_area {
+    width: calc(100% - 36px);
+    margin: 12px 36px 12px 0;
+    position: relative;
+    display: flex;
+    align-items: end;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(0, 0, 0, 0.4);
+    border-radius: 24px;
+    z-index: 1;
 }
 
 .writing_quill_area {
-    width: calc(100% - 400px);
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    background-color: rgba(255, 255, 255, 0.8);
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.ql-toolbar {
+    border: 0 !important;
+    display: none;
 }
 
 .ql-editor {
@@ -121,19 +220,67 @@ a {
     overflow-y: auto;
 }
 
+
 .ql-container {
     height: auto !important;
+    border: 0 !important;
 }
 
 .ql-editor strong {
     font-weight: bold;
 }
 
-.enter-area {
-    text-align: right;
-    padding-left: 10px;
+.buttons {
+    width: 100px;
+    display: flex;
 }
 
-.enter {
-    width: 100%;
+.toolbar_switch {
+    width: 40px;
+    height: 40px;
+    margin: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: rgb(75, 75, 75) solid 3px;
+    border-radius: 100%;
+    box-sizing: border-box;
+}
+
+.toolbar_switch:hover {
+    background-color: rgb(75, 75, 75);
+}
+
+.toolbar_button {
+    width: 20px;
+    height: 20px;
+}
+
+.toolbar_switch:hover .toolbar_button {
+    filter: brightness(0) invert(1);
+}
+
+.enter_area {
+    width: 40px;
+    height: 40px;
+    margin: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: rgb(58, 171, 210) solid 3px;
+    border-radius: 100%;
+    box-sizing: border-box;
+}
+
+.enter_area:hover {
+    background-color: rgb(58, 171, 210);
+}
+
+.enter_button {
+    width: 20px;
+    height: 20px;
+}
+
+.enter_area:hover .enter_button {
+    filter: brightness(0) invert(1);
 }
